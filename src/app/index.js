@@ -1,0 +1,53 @@
+/* eslint-disable no-undef */
+import { registerHotKeys } from './keyEvents/keyboard/hotKeys';
+import registerWindowMouseEvents from './keyEvents/mouse/registerEvents';
+import { findUserOS } from './tools/OS/OSManager';
+import { constructCanvas } from './canvas/canvas';
+import initialiseToolkit from './tools/toolkit/init';
+import initialiseWelcomeModal from './tools/welcomeModal/init';
+import initialiseLabellerModal from './tools/labellerModal/buttons';
+import { initialiseUploadDatasetsModal } from './tools/uploadDatasetsModal/views/viewManager';
+import { initialiseMachineLearningModal } from './tools/machineLearningModal/views/viewManager';
+import initialiseExportDatasetsPopup from './tools/exportDatasetsPopup/init';
+import { initialiseSettingsPopup } from './tools/settingsPopup/init';
+import assignPassiveEventListeners from './tools/passiveEventListeners/passiveEventListeners';
+import initialiseShapeManipulationDeltas from './canvas/objects/deltaValueSetters/initialiseShapeManipulationDeltas';
+import initialiseDragAndDropFunctionality from './tools/dragAndDrop/dragAndDrop';
+import initialiseImageListFunctionality from './tools/imageList/init';
+import initialiseLabelListFunctionality from './tools/labelList/init';
+import initialiseRemoveImagesModal from './tools/imageList/removeImages/modal/init';
+import { initialiseCoreButtonPopovers } from './tools/globalStyling/buttons/popovers';
+import { applyStyling } from './tools/globalStyling/style';
+import { initialiseImageSwitchPanelFunctionality } from './tools/imageSwitchPanel/style';
+import { initialisePulseAnimationCancelling } from './tools/utils/buttons/pulseAnimation';
+import { initialiseWindowDimService } from './tools/dimWindow/dimWindowService';
+import initialiseBrowserExitHandler from './tools/browserExit/browserExitHandler';
+import initialiseAPIs from './tools/api';
+
+// eslint-disable-next-line no-unused-vars
+window.addEventListener('load', (e) => {
+  findUserOS();
+  applyStyling();
+  constructCanvas();
+  registerHotKeys();
+  initialiseToolkit();
+  initialiseLabellerModal();
+  initialiseSettingsPopup();
+  registerWindowMouseEvents();
+  initialiseWindowDimService();
+  initialiseCoreButtonPopovers();
+  initialiseExportDatasetsPopup();
+  initialiseUploadDatasetsModal();
+  initialiseMachineLearningModal();
+  assignPassiveEventListeners();
+  initialiseRemoveImagesModal();
+  initialiseImageListFunctionality();
+  initialiseLabelListFunctionality();
+  initialiseDragAndDropFunctionality();
+  initialiseImageSwitchPanelFunctionality();
+  initialisePulseAnimationCancelling();
+  initialiseShapeManipulationDeltas();
+  initialiseBrowserExitHandler();
+  initialiseWelcomeModal();
+  initialiseAPIs();
+}, false);
